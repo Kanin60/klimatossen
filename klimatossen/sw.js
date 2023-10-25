@@ -5,10 +5,13 @@ const dynamicCacheName = 'site-dynamic-v1'
 
 // Array med filer
 const assets = [
-    './index.html',
-    './src/main.jsx',
-    './src/App.jsx',
-    './src/App.css'
+    '/index.html',
+    '/src/main.jsx',
+    '/src/App.jsx',
+    '/src/App.css', 
+    '/fallback.html', 
+    '/src/assets/error.jpg',
+    '/src/assets/Frelly-K7D27.otf'
 ]
 
 caches.open('my-cache').then(cache => {
@@ -63,7 +66,9 @@ self.addEventListener('fetch', event => {
 					return fetchRes
 				})
 			})
-		})
+		}).catch(() => {
+            return caches.match('fallback.html')
+        })
 	)
     // BRUGES TIL AT UNDGÅ OVERLOAD AF FILER I VORES BROWSERCACHE FORDI DEN DYNAMISKE CACHE TILFØJER FILER
     //begræning - sat til 2
