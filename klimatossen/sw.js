@@ -65,6 +65,7 @@ self.addEventListener('fetch', event => {
 			})
 		})
 	)
+    // BRUGES TIL AT UNDGÅ OVERLOAD AF FILER I VORES BROWSERCACHE FORDI DEN DYNAMISKE CACHE TILFØJER FILER
     //begræning - sat til 2
     const limitCacheTwo = (cacheName, numberOfAllowedFiles) => {
         caches.open(cacheName).then(cache => {
