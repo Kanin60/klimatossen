@@ -68,9 +68,13 @@ self.addEventListener('fetch', event => {
     // BRUGES TIL AT UNDGÅ OVERLOAD AF FILER I VORES BROWSERCACHE FORDI DEN DYNAMISKE CACHE TILFØJER FILER
     //begræning - sat til 2
     const limitCacheTwo = (cacheName, numberOfAllowedFiles) => {
+        // Åbn den angivede cache
         caches.open(cacheName).then(cache => {
+            // Hent array af cache keys 
             cache.keys().then(keys => {
+                // Hvis mængden af filer overstiger det tilladte
                 if(keys.length > numberOfAllowedFiles) {
+                    // Slet første index (ældste fil) og kør funktion igen indtil antal er nået
                     cache.delete(keys[0]).then(limitCacheTwo(caches, numberOfAllowedFiles))
                 }
             })
