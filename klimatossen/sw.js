@@ -49,7 +49,7 @@ self.addEventListener('fetch', event => {
 		// Kig efter file match i cache 
 		caches.match(event.request).then(cacheRes => {
 			// Returner match fra cache - ellers hent fil på server
-			return cacheRes || fetch(event.request).then(fetchRes => {
+			return cacheRes || fetch(event.request).then(async fetchRes => {
 				// Tilføjer nye sider til cachen
 				return caches.open(dynamicCacheName).then(cache => {
 					// Bruger put til at tilføje sider til vores cache
