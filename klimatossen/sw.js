@@ -12,7 +12,7 @@ const assets = [
 ]
 
 caches.open('my-cache').then(cache => {
-    // Tilføj flere filer
+    // Tilføj flere filerne fra arrayet ovenover
     cache.addAll(assets); 
 });
 
