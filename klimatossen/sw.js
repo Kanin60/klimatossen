@@ -65,4 +65,15 @@ self.addEventListener('fetch', event => {
 			})
 		})
 	)
+    //begræning - sat til 2
+    const limitCacheTwo = (cacheName, numberOfAllowedFiles) => {
+        caches.open(cacheName).then(cache => {
+            cache.keys().then(keys => {
+                if(keys.length > numberOfAllowedFiles) {
+                    cache.delete(keys[0]).then(limitCacheTwo(caches, numberOfAllowedFiles))
+                }
+            })
+        })
+    }
+    limitCacheTwo(dynamicCacheName, 2)
 })
