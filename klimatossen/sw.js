@@ -14,7 +14,6 @@ caches.open('my-cache').then(cache => {
     cache.addAll(assets); 
 });
 
-
 // Install Service Worker
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -25,6 +24,7 @@ self.addEventListener('install', event => {
 	console.log('Service Worker has been installed');
 })
 
+//SLETTER OVERSKYDENDE CACHES SOM IKKE ER staticCacheName
 // Activate Service Worker
 self.addEventListener('activate', event => {
 	console.log('Service Worker has been activated');
@@ -42,8 +42,10 @@ self.addEventListener('activate', event => {
     )
 })
 
+//TILFØJER SIDER(FILER) TIL CACHEN DYNAMISK
 // Fetch event
 self.addEventListener('fetch', event => {
+    if(!(event.request.url.indexOf('http') === 0 )) return
 	// Kontroller svar på request
 	event.respondWith(
 		// Kig efter file match i cache 
