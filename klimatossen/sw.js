@@ -6,10 +6,10 @@ const dynamicCacheName = 'site-dynamic-v1'
 // Array med filer
 const assets = [
     '/index.html',
+    '/fallback.html', 
     '/src/main.jsx',
     '/src/App.jsx',
     '/src/App.css', 
-    '/fallback.html', 
     '/src/assets/error.jpg',
     '/src/assets/Frelly-K7D27.otf'
 ]
