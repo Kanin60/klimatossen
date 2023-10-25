@@ -1,3 +1,5 @@
+//CACHES BLIVER BRUGT TIL AT GEMME KODE OFFLINE - SÅ FILER MAN VIL TILGÅ OFFLINE BLIVER GEMT I CACHEN
+
 const staticCacheName = 'static-caches-v3'
 const dynamicCacheName = 'site-dynamic-v1'
 
